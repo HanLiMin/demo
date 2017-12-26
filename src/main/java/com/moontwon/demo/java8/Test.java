@@ -8,6 +8,5 @@ public class Test {
 		String pwd = RandomStringUtils.randomAlphabetic(16);
 		System.err.println(pwd);
 		System.err.println(DigestUtils.sha256Hex(pwd));
-
 	}
 }

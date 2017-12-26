@@ -1,33 +1,26 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-	version="2.1">
-	<persistence-unit name="p">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<properties>
-			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" 
-				/> <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.124:3306/quotes?serverTimezone=UTC" 
-				/> <property name="javax.persistence.jdbc.user" value="mysql" /> <property 
-				name="javax.persistence.jdbc.password" value="mysql" /> -->
+             version="2.1">
+    <persistence-unit name="bbb">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://192.168.13.137:3306/demo?&amp;serverTimezone=Asia/Shanghai"/>
+            <property name="username" value="root"/>
+            <property name="password" value="root"/>
+            <property name="hibernate.show_sql"    value="true"/>
+            <property name="hibernate.connection.provider_class" value="com.alibaba.druid.support.hibernate.DruidConnectionProvider"/>
 
-			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-			<property name="url"
-				value="jdbc:mysql://192.168.1.124:3306/quotes?serverTimezone=UTC" />
-			<property name="username" value="mysql" />
-			<property name="password" value="mysql" />
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+            <property name="hibernate.cache.use_reference_entries" value="true"/>
+            <property name="hibernate.cache.default_cache_concurrency_strategy" value="read-write"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create-only"/>-->
+            <property name="hibernate.generate_statistics" value="true"/>
 
-
-
-
-			<property name="hibernate.show_sql" value="true" />
-
-			<property name="hibernate.hbm2ddl.auto" value="create-only" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect" />
-			<property name="hibernate.connection.provider_class"
-				value="com.alibaba.druid.support.hibernate.DruidConnectionProvider" />
-
-
-		</properties>
-	</persistence-unit>
+        </properties>
+    </persistence-unit>
 </persistence>
