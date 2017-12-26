@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Server extends Thread {
-	
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(Server.class);
 	public static void main(String[] args) throws IOException {
 		new Server();
@@ -57,15 +57,11 @@ public class Server extends Thread {
 	 * @throws IOException
 	 */
 	private void handleKey(SelectionKey key) throws IOException {
-		if (key.isValid()) {
-			if (key.isAcceptable()) {
-				ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
-				SocketChannel socketChannel = serverSocketChannel.accept();
-				socketChannel.configureBlocking(false);
-				eventLoopHandler.register(socketChannel);
-			}
-		} else {
-			key.cancel();
+		if (key.isValid() && key.isAcceptable()) {
+			ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
+			SocketChannel socketChannel = serverSocketChannel.accept();
+			socketChannel.configureBlocking(false);
+			eventLoopHandler.register(socketChannel);
 		}
 	}
 

@@ -41,7 +41,6 @@ public class EventLoopHandler extends Thread {
 								LOGGER.info("event loop read");
 								ChannelMessage channelMessage = sc.get(socketChannel);
 								channelMessage.read();
-								key.interestOps(SelectionKey.OP_READ);
 							}
 							
 						}
@@ -80,6 +79,9 @@ public class EventLoopHandler extends Thread {
 	private void handleException(Exception exception) {
 		LOGGER.info("throw a exception ",exception);
 	}
+	
+	
+	
 	class ChannelMessage {
 		SocketChannel socketChannel;
 		ByteBuffer byteBuffer;
