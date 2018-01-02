@@ -29,6 +29,7 @@ public class Client  {
 			
 			for(;;){
 				if (selector.select()>0) {
+
 				}
 			}
 			
