@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="bookService" class="com.moontwon.demo.spring.service.BookService"/>
-    <bean id="studentService" class="com.moontwon.demo.spring.service.StudentService" autowire="constructor"/>
+    <bean id="studentService" class="com.moontwon.demo.spring.service.StudentService"/>
     <bean id="instantiationTracingBeanPostProcessor"
           class="com.moontwon.demo.spring.InstantiationTracingBeanPostProcessor"/>
 </beans>
