@@ -23,6 +23,7 @@
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <shiro-version>1.4.0</shiro-version>
         <spring-boot-dependencie>2.0.3.RELEASE</spring-boot-dependencie>
+        <spring-version>5.0.7.RELEASE</spring-version>
         <mybatis-version>3.4.5</mybatis-version>
         <druid-version>1.1.6</druid-version>
         <guava-version>23.5-jre</guava-version>
@@ -31,6 +32,7 @@
         <akka-acto-version>2.5.6</akka-acto-version>
         <junit-version>4.12</junit-version>
         <mockito-all-version>1.10.19</mockito-all-version>
+        <commons-version>2.6</commons-version>
     </properties>
     <build>
         <plugins>
@@ -52,6 +54,22 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.shiro</groupId>

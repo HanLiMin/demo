@@ -1,6 +1,8 @@
 package com.moontwon.demo.spring.service;
 
 import org.springframework.context.Lifecycle;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.stereotype.Service;
 
 /**
  * @author hanlimin
@@ -8,6 +10,7 @@ import org.springframework.context.Lifecycle;
  * @email hanlimin@yuantutech.com
  * @date 2018/7/13
  */
+@Service
 public class BookService implements Lifecycle {
     @Override
     public void start() {

@@ -1,7 +1,7 @@
 package com.moontwon.demo.spring;
 
 import com.moontwon.demo.spring.service.StudentService;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author hanlimin
@@ -11,7 +11,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Container {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
-        StudentService bean = classPathXmlApplicationContext.getBean(StudentService.class);
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
+        annotationConfigApplicationContext.register(ApplicationConfiguration.class);
+        annotationConfigApplicationContext.refresh();
+
+        StudentService bean = annotationConfigApplicationContext.getBean(StudentService.class);
+        System.err.println(annotationConfigApplicationContext.getBean(Config.class).getAppName());
+        System.err.println();
     }
 }

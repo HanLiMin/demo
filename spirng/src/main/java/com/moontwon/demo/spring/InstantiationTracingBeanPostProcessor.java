@@ -2,6 +2,7 @@ package com.moontwon.demo.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.stereotype.Component;
 
 /**
  * @author hanlimin
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  * @email hanlimin@yuantutech.com
  * @date 2018/7/13
  */
+@Component
 public class InstantiationTracingBeanPostProcessor implements BeanPostProcessor {
 
     @Override
