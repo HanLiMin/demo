@@ -1,5 +1,6 @@
 package com.moontwon.demo.spring;
 
+import com.moontwon.demo.spring.da.PersionDO;
 import com.moontwon.demo.spring.service.StudentService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,7 +17,7 @@ public class Container {
         annotationConfigApplicationContext.refresh();
 
         StudentService bean = annotationConfigApplicationContext.getBean(StudentService.class);
-        System.err.println(annotationConfigApplicationContext.getBean(Config.class).getAppName());
-        System.err.println();
+        bean.add(new PersionDO());
+
     }
 }

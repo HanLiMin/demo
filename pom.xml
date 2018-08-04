@@ -15,6 +15,7 @@
         <module>jvm</module>
         <module>redis</module>
         <module>temp</module>
+        <module>aspectj</module>
     </modules>
     <packaging>pom</packaging>
     <name>A custom project</name>
@@ -33,6 +34,10 @@
         <junit-version>4.12</junit-version>
         <mockito-all-version>1.10.19</mockito-all-version>
         <commons-version>2.6</commons-version>
+        <validation-veersion>2.0.1.Final</validation-veersion>
+        <hibernate-validator-version>6.0.11.Final</hibernate-validator-version>
+        <javax-el-api-version>3.0.0</javax-el-api-version>
+        <javax-el-version>3.0.0</javax-el-version>
     </properties>
     <build>
         <plugins>
@@ -125,6 +130,28 @@
                 <version>${mockito-all-version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-veersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax-el-api-version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.glassfish/javax.el -->
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax-el-version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
