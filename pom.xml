@@ -16,6 +16,8 @@
         <module>redis</module>
         <module>temp</module>
         <module>aspectj</module>
+        <module>java7</module>
+        <module>java8</module>
     </modules>
     <packaging>pom</packaging>
     <name>A custom project</name>
