@@ -1,11 +1,16 @@
 package com.moontwon.demo.java8;
 
+import com.moontwon.demo.java8.annotation.Tree;
+import com.moontwon.demo.java8.dao.StudentDAO;
+import com.moontwon.demo.java8.dao.impl.StudentDAOImpl;
+import com.moontwon.demo.java8.dto.CollegeDTO;
+import com.moontwon.demo.java8.dto.StudentDTO;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.*;
+import java.util.*;
 
 /**
  * @author hanlimin
@@ -14,7 +19,6 @@ import java.util.List;
  * @date 2018/8/9
  */
 public class ClassTest {
-
     @Test
     public void testTypeName() {
         HashMap<String, Long>[] hashMaps = new HashMap[0];
@@ -32,5 +36,93 @@ public class ClassTest {
         List<Integer>[] list = new ArrayList[0];
         System.err.println(list.getClass().getName());
 
+    }
+
+    @Test
+    public void testAnnotatedElement() {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        Arrays.stream(collegeDTOClass.getDeclaredAnnotations()).sequential().forEach(System.out::println);
+
+
+    }
+
+
+    @Test
+    public void testAnnotatedElement1() {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        Arrays.stream(collegeDTOClass.getAnnotations()).sequential().forEach(System.out::println);
+    }
+
+    @Test
+    public void testAnnotatedElement2() {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        Arrays.stream(collegeDTOClass.getDeclaredAnnotationsByType(Tree.class)).sequential().forEach(System.out::println);
+    }
+
+    @Test
+    public void testAnnotatedElement3() {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        System.err.println(collegeDTOClass.getAnnotation(Tree.class));
+    }
+
+    @Test
+    public void testSupperClassMethond() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        Method doSomething = collegeDTOClass.getMethod("doSomething");
+        doSomething.invoke(new CollegeDTO(), null);
+    }
+
+    @Test
+    public void testSupperClassStaticMethond() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Class<CollegeDTO> collegeDTOClass = CollegeDTO.class;
+        Method doSomething = collegeDTOClass.getDeclaredMethod("print");
+        doSomething.setAccessible(true);
+        doSomething.invoke(null);
+    }
+
+    @Test
+    public void testToGenericString() {
+        Map<String, Thread> map = new HashMap<>();
+        System.err.println(map.getClass().getName());
+        System.err.println(map.getClass().toGenericString());
+    }
+
+    @Test
+    public void testGenericsInfo() {
+        Type[] genericInterfaces = StudentDAOImpl.class.getGenericInterfaces();
+        Type genericInterface = genericInterfaces[0];
+        ParameterizedType parameterizedType = (ParameterizedType) genericInterface;
+        System.err.println(parameterizedType.getOwnerType());
+        System.err.println(parameterizedType.getRawType());
+        System.err.println(Arrays.toString(parameterizedType.getActualTypeArguments()));
+    }
+
+    @Test
+    public void testInterfaceGenericsInfo() {
+        Type[] genericInterfaces = StudentDAO.class.getTypeParameters();
+        for (Type genericInterface : genericInterfaces) {
+            TypeVariable typeVariable = (TypeVariable) genericInterface;
+            System.err.println("annotatedType:\n");
+            for (AnnotatedType annotatedType : typeVariable.getAnnotatedBounds()) {
+                System.err.println(ToStringBuilder.reflectionToString(annotatedType, ToStringStyle.JSON_STYLE));
+                System.err.println("\n");
+            }
+            System.err.println(Arrays.toString(typeVariable.getBounds()));
+            System.err.println(typeVariable.getGenericDeclaration());
+            System.err.println(typeVariable.getName());
+            System.err.println(typeVariable.getTypeName());
+            System.err.println("===========================================\n");
+
+        }
+    }
+
+    @Test
+    public void testGetEnclosingMethod() {
+        Class<StudentDAOImpl> studentDAOClass = StudentDAOImpl.class;
+        System.err.println(Arrays.toString(studentDAOClass.getClasses()));
+    }
+    @Test
+    public void testIsAssignableFrom(){
+        System.err.println(StudentDTO.class.isAssignableFrom(CollegeDTO.class));
     }
 }
