@@ -13,13 +13,15 @@ import java.util.Collections;
  */
 public class JarUrlDemo {
     public static void main(String[] args) throws IOException {
-//        String name = "org/apache/ibatis/io";
-        String name = "java/lang";
+        String name = "org/apache/ibatis/io";
+//        String name = "java/lang";
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         ArrayList<URL> list = Collections.list(classLoader.getResources(name));
         for (URL url : list) {
             System.err.println(url);
         }
+        URL url = list.get(0);
+
 
     }
 }
