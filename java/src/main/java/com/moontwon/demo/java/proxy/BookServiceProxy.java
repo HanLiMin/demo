@@ -1,5 +1,6 @@
 package com.moontwon.demo.java.proxy;
 
+import com.moontwon.demo.java.dto.BookDTO;
 import com.moontwon.demo.java.service.BookService;
 
 /**
@@ -19,5 +20,10 @@ public class BookServiceProxy implements BookService {
     public long getPrice(long id) {
         System.err.println("普通代理");
         return bookService.getPrice(id);
+    }
+
+    @Override
+    public void print(BookDTO bookDTO) {
+
     }
 }

@@ -125,4 +125,11 @@ public class ClassTest {
     public void testIsAssignableFrom(){
         System.err.println(StudentDTO.class.isAssignableFrom(CollegeDTO.class));
     }
+
+    @Test
+    public void testGetTypeParamers(){
+        Map<String, Integer> map = new HashMap<>();
+        Class<? extends Map> clazz = map.getClass();
+        System.err.println(Arrays.toString(clazz.getTypeParameters()));
+    }
 }
