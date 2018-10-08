@@ -5,6 +5,7 @@ import com.moontwon.demo.java8.dao.StudentDAO;
 import com.moontwon.demo.java8.dao.impl.StudentDAOImpl;
 import com.moontwon.demo.java8.dto.CollegeDTO;
 import com.moontwon.demo.java8.dto.StudentDTO;
+import com.moontwon.demo.java8.dto.TeacherDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
@@ -131,5 +132,24 @@ public class ClassTest {
         Map<String, Integer> map = new HashMap<>();
         Class<? extends Map> clazz = map.getClass();
         System.err.println(Arrays.toString(clazz.getTypeParameters()));
+    }
+
+    @Test
+    public void testField() throws NoSuchFieldException {
+        Class<TeacherDTO> teacherDTOClass = TeacherDTO.class;
+        Field field = teacherDTOClass.getField("studentDTOS");
+        System.err.println(field.getGenericType().getClass());
+        System.err.println(field.getDeclaringClass());
+        ParameterizedType genericType = (ParameterizedType) field.getGenericType();
+        System.err.println(genericType.getRawType());
+        System.err.println(genericType.getActualTypeArguments()[0]);
+        System.err.println("================================");
+        Field field2 = teacherDTOClass.getField("obj");
+        System.err.println(field2.getGenericType().getClass());
+        System.err.println(field2.getDeclaringClass());
+        System.err.println("================================");
+        Field field3 = teacherDTOClass.getField("objs");
+        System.err.println(field3.getGenericType().getClass());
+        System.err.println(field3.getDeclaringClass());
     }
 }
