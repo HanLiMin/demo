@@ -152,4 +152,10 @@ public class ClassTest {
         System.err.println(field3.getGenericType().getClass());
         System.err.println(field3.getDeclaringClass());
     }
+
+    @Test
+    public void testClassName(){
+        System.err.println(StudentDAO.class.getName());
+        System.err.println(StudentDAO.class.toString());
+    }
 }
