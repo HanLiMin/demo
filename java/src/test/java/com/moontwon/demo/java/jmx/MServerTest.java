@@ -20,6 +20,7 @@ public class MServerTest {
         ObjectName aaa = new ObjectName("com.moontwon.demo.java.jmx:type=Config");
         platformMBeanServer.registerMBean(config, aaa);
         Thread.sleep(1000 * 300);
+
     }
 
 
